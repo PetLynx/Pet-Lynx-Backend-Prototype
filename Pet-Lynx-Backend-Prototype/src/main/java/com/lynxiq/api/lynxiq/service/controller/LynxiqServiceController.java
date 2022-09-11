@@ -14,11 +14,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/lynx")
 public class LynxiqServiceController {
 
 
-    @GetMapping(value = "/pets")
+    @GetMapping(value = "/")
     public JsonNode getPetsdata() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File jsonFile = new ClassPathResource("pet-data.json").getFile();
