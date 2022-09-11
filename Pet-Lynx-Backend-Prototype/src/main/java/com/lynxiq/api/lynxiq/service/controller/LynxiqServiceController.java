@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ import java.util.Map;
 public class LynxiqServiceController {
 
 
-    @GetMapping(value = "/")
+    @PostMapping(value = "/pets")
     public JsonNode getPetsdata() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File jsonFile = new ClassPathResource("pet-data.json").getFile();
@@ -26,7 +27,7 @@ public class LynxiqServiceController {
 
 
     }
-    @GetMapping(value = "/pets/{id}")
+    @PostMapping(value = "/pets/{id}")
     public Object getPetsdata(@PathVariable String id) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File jsonFile = new ClassPathResource("pet-data.json").getFile();
