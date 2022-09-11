@@ -18,7 +18,7 @@ import java.util.Map;
 public class LynxiqServiceController {
 
 
-    @PostMapping(value = "/pets")
+	@GetMapping(value = "/pets")
     public JsonNode getPetsdata() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File jsonFile = new ClassPathResource("pet-data.json").getFile();
