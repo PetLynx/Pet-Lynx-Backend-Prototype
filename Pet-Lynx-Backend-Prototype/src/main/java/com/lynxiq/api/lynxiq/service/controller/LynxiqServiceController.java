@@ -27,17 +27,22 @@ public class LynxiqServiceController {
 
 	@Autowired
 	ResourceLoader resourceLoader;
-	
+	@GetMapping(value = "/ping")
+	 public String pingData()
+	 {
+		
+		return "ping";
+	 }
 	
 	@GetMapping(value = "/pets")
     public JsonNode getPetsdata() throws IOException, URISyntaxException {
-       ObjectMapper objectMapper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper();
 //        URL resource = getClass().getClassLoader().getResource("pet-data.json");
 //        File jsonFile = new File(resource.toURI());
 		
 		
-		Resource resource=resourceLoader.getResource("classpath:pet-data.json");
-		File jsonFile		= resource.getFile();
+		
+		File jsonFile		= new File("src/pet-data.json");
         JsonNode node = objectMapper.readTree(jsonFile);
         
         
@@ -50,8 +55,8 @@ public class LynxiqServiceController {
     @PostMapping(value = "/pets/{id}")
     public Object getPetsdata(@PathVariable String id) throws IOException, URISyntaxException {
         ObjectMapper objectMapper = new ObjectMapper();
-        URL resource = getClass().getClassLoader().getResource("pet-data.json");
-        File jsonFile = new File(resource.toURI());
+        //URL resource = getClass().getClassLoader().getResource("pet-data.json");
+        File jsonFile		= new File("src/pet-data.json");
         Map obj = objectMapper.readValue(jsonFile, Map.class);
         List<Object> pets = (List<Object>) obj.get("pets");;
         Object[] filterPet = pets

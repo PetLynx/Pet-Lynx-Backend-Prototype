@@ -1,0 +1,37 @@
+{
+
+  "pets": [
+  {
+    "id": "2f01d2b1-6f26-42cc-8512-22bdae9c818d",
+    "name": "Graf",
+    "age": "5",
+    "photo": "",
+    "breed": "Terrier",
+    "type": "dog"
+  },
+  {
+    "id": "89f0dab5-9173-4172-86ca-ba1564dbc1ca",
+    "name": "Luna",
+    "age": "3",
+    "photo": "",
+    "breed": "Maine coon",
+    "type": "cat"
+  },
+  {
+    "id": "7774578b-9d29-4cb2-9147-3f125de7b9e5",
+    "name": "Tiger",
+    "age": "5",
+    "photo": "",
+    "breed": "Terrier",
+    "type": "dog"
+  },
+  {
+    "id": "9081ee53-126f-4763-b5bb-9fb719131d9e",
+    "name": "Honey",
+    "age": "5",
+    "photo": "",
+    "breed": "Terrier",
+    "type": "cat"
+  }
+]
+}
