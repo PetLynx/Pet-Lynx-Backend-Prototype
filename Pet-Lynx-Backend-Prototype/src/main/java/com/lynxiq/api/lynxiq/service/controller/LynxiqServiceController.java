@@ -2,12 +2,16 @@ package com.lynxiq.api.lynxiq.service.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.core.io.Resource;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,12 +25,19 @@ import java.util.Map;
 @RequestMapping("/api/v1/lynx")
 public class LynxiqServiceController {
 
-
+	@Autowired
+	ResourceLoader resourceLoader;
+	
+	
 	@GetMapping(value = "/pets")
     public JsonNode getPetsdata() throws IOException, URISyntaxException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        URL resource = getClass().getClassLoader().getResource("pet-data.json");
-        File jsonFile = new File(resource.toURI());
+       ObjectMapper objectMapper = new ObjectMapper();
+//        URL resource = getClass().getClassLoader().getResource("pet-data.json");
+//        File jsonFile = new File(resource.toURI());
+		
+		
+		Resource resource=resourceLoader.getResource("classpath:pet-data.json");
+		File jsonFile		= resource.getFile();
         JsonNode node = objectMapper.readTree(jsonFile);
         
         
