@@ -52,7 +52,7 @@ public class LynxiqServiceController {
        
 
     }
-    @PostMapping(value = "/pets/{id}")
+	@GetMapping(value = "/pets/{id}")
     public Object getPetsdata(@PathVariable String id) throws IOException, URISyntaxException {
         ObjectMapper objectMapper = new ObjectMapper();
         //URL resource = getClass().getClassLoader().getResource("pet-data.json");
