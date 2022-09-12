@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
@@ -20,18 +23,24 @@ public class LynxiqServiceController {
 
 
 	@GetMapping(value = "/pets")
-    public JsonNode getPetsdata() throws IOException {
+    public JsonNode getPetsdata() throws IOException, URISyntaxException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File jsonFile = new ClassPathResource("pet-data.json").getFile();
+        URL resource = getClass().getClassLoader().getResource("pet-data.json");
+        File jsonFile = new File(resource.toURI());
         JsonNode node = objectMapper.readTree(jsonFile);
+        
+        
+     
+        
         return node;
-
+       
 
     }
     @PostMapping(value = "/pets/{id}")
-    public Object getPetsdata(@PathVariable String id) throws IOException {
+    public Object getPetsdata(@PathVariable String id) throws IOException, URISyntaxException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File jsonFile = new ClassPathResource("pet-data.json").getFile();
+        URL resource = getClass().getClassLoader().getResource("pet-data.json");
+        File jsonFile = new File(resource.toURI());
         Map obj = objectMapper.readValue(jsonFile, Map.class);
         List<Object> pets = (List<Object>) obj.get("pets");;
         Object[] filterPet = pets
